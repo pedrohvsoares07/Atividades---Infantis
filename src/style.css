@@ -1661,3 +1661,38 @@ em {
 .placeholder-note {
   color: #3c5a49;
 }
+
+/* Apresentação atualizada dos kits: somente frontend. */
+.kits-section {background:#f8f8ff}
+.kits-section .section-heading h2 em {color:#6b44c8}
+.plans-grid {gap:24px;max-width:1070px}
+.plan-card {position:relative;border:2px solid #e6e3f4;border-radius:28px;overflow:visible;box-shadow:0 18px 34px #23274d14;display:flex;flex-direction:column}
+.plan-featured {border:3px solid #8355db;box-shadow:0 20px 44px #8158cf30}
+.plan-cover {height:252px;position:relative;display:grid;place-items:center;overflow:hidden;border-radius:26px 26px 0 0;background:linear-gradient(135deg,#eaf8ff,#f6f0ff)}
+.plan-featured .plan-cover {background:linear-gradient(120deg,#fcedff,#fff1ca 58%,#d7f9f2)}
+.cover-media {width:min(78%,280px);height:210px;object-fit:contain;border-radius:14px}
+.plan-ribbon {position:absolute;top:12px;left:17px;z-index:2;display:inline-flex;background:#fff;border-radius:99px;padding:9px 14px;color:#6654a5;font-size:.7rem;font-weight:900;letter-spacing:.06em;box-shadow:0 4px 18px #30244a13}
+.plan-featured .plan-ribbon {color:#fff;background:#7950c8}
+.plan-content {display:flex;flex-direction:column;flex:1;padding:25px 30px 30px}
+.plan-kicker {color:#8d5bc9;font-weight:900}
+.plan-content h3 {font-family:"Trebuchet MS",Arial,sans-serif;font-size:2rem;font-weight:900;letter-spacing:-.045em;color:#242b51}
+.plan-content > p {min-height:47px;color:#616a7b}
+.plan-quantity {border-color:#e8e4f0}
+.plan-quantity strong {font-family:"Trebuchet MS",Arial,sans-serif;font-size:3.2rem;font-weight:900;color:#61a882}
+.plan-featured .plan-quantity strong {color:#8150d5}
+.plan-content ul {margin:20px 0 26px}
+.plan-content li {color:#4c526a}
+.plan-content li::before {color:#28a266}
+.plan-bottom {border-top:1px dashed #ddd9ed;padding-top:18px;margin-top:auto;display:flex;flex-direction:column;align-items:stretch;gap:14px}
+.price-wrap {display:flex;flex-direction:column;align-items:flex-start}
+.price-wrap > span {font-size:.76rem;font-weight:800;color:#76758b}
+.price-wrap del {font-family:"Trebuchet MS",Arial,sans-serif;font-size:1.13rem;font-weight:800;color:#a4808a;text-decoration-color:#df617c;text-decoration-thickness:2px;margin:4px 0}
+.price-wrap strong {font-family:"Trebuchet MS",Arial,sans-serif;font-size:clamp(2.6rem,4vw,3.25rem);line-height:1;font-weight:900;letter-spacing:-.05em;color:#2e9759}
+.plan-featured .price-wrap strong {color:#7445d5}
+.plan-bottom .button {width:100%;min-height:49px;text-align:center;justify-content:center;border-radius:14px}
+.plan-featured .plan-bottom .button {background:#7950d2}
+.plan-featured .plan-bottom .button:disabled {background:#7950d2}
+.plan-bottom button:disabled {opacity:1;filter:saturate(.7);cursor:not-allowed}
+.brand-mark {background:#fff6d0;color:#28375a;border:1px solid #f2cf73;border-radius:18px;display:grid;place-items:center;overflow:hidden}
+.brand-mark .cute-star {max-width:90%;height:auto}
+@media(max-width:600px){.plan-cover{height:215px}.plan-content{padding:25px}.plan-content h3{font-size:1.7rem}.price-wrap strong{font-size:2.7rem}.plan-ribbon{font-size:.62rem}}
