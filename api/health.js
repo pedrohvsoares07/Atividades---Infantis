@@ -7,11 +7,20 @@ export default async function handler(req, res) {
 
   try {
     const sql = getSql();
-    await sql`SELECT 1 AS healthy`;
+    // Além da conexão, valida que o banco selecionado possui o catálogo oficial.
+    // Isso evita um falso "ok" ao apontar para a branch main vazia do Neon.
+    const [result] = await sql`
+      SELECT COUNT(*)::int AS kits_found
+      FROM public.products
+      WHERE slug IN ('kit-essencial', 'kit-completo')
+    `;
+    if (result?.kits_found !== 2) {
+      return res.status(503).json({ status: "unavailable" });
+    }
     return res.status(200).json({ status: "ok" });
   } catch (error) {
-    // Nunca escrever DATABASE_URL ou password em logs ou JSON público.
-    console.error("Database health check failed:", error instanceof Error ? error.name : "unknown");
+    // Nunca incluir a connection string ou detalhes privados na resposta pública.
+    console.error("Database readiness check failed:", error instanceof Error ? error.name : "unknown");
     return res.status(503).json({ status: "unavailable" });
   }
 }
