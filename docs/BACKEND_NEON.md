@@ -33,3 +33,14 @@ Não conectar esta API ao frontend automaticamente sem revisão conjunta do form
 - Há também uma implantação inicial do projeto no alvo production **sem** `DATABASE_URL` de produção; não deve ser usada como ambiente operacional.
 - **Bloqueio Git**: a integração GitHub no Vercel não está autorizada para `pedrohvsoares07/Atividades---Infantis`. O proprietário precisa conceder acesso a este repositório nas configurações da integração GitHub da Vercel. Após a autorização, vincular o repositório e configurar builds de Preview para a branch do backend; não mudar a demo Next.js preexistente.
 - O frontend do Pedro continua sem consumir a API, propositalmente. Não foi ativado Stripe nem publicada a loja.
+
+## Verificação de integração — 22/10/2026
+
+Código da branch `teste-neon` reproduzido integralmente em ambiente Vercel de staging:
+- Vite `npm run build` concluído; TypeScript e compilação sem erros.
+- `GET /api/health`: HTTP 200, `{"status":"ok"}`.
+- `GET /api/catalog`: HTTP 200, somente `kit-essencial` (100) e `kit-completo` (300), ambos `coming_soon`, preços nulos e checkout desativado.
+- `GET /`: HTTP 200, frontend estático entregue.
+- Validação de staging: `https://aprender-descobrir-r09eq61nc-donyxxj7s-projects.vercel.app`.
+
+**Importante:** o workspace do projeto `backendinfantil` na Vercel é `venturini-group`, que não está autorizado na conexão Vercel atual do agente. Os resultados acima comprovam o funcionamento do código em staging independente; não substituem os testes no deployment de Venturini. Para o projeto `backendinfantil`, conferir que ele compila a branch `teste-neon` (não `main`), usa Framework Vite, Root Directory `./`, Build Command `npm run build`, Output Directory `dist`, e possui `DATABASE_URL` no ambiente Preview apontando ao banco Neon `aprender-descobrir` da branch `development`. Nunca expor credenciais no frontend.
