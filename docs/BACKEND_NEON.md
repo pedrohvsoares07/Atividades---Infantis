@@ -22,3 +22,14 @@ Nunca commitar `.env` real ou credenciais do Neon. Para migrações futuras, usa
 O frontend do Pedro mantém preços demonstrativos e compras em breve. A API **não** autoriza compras.
 Antes de implementar checkout: aprovar preços verdadeiros, publicação dos termos, Stripe TEST, webhook autenticado, idempotência e entrega privada dos PDFs. Nunca publicar PDFs pagos em `public/`.
 Não conectar esta API ao frontend automaticamente sem revisão conjunta do formato de dados.
+
+## Integração Vercel realizada em 22/10/2026
+
+- Projeto Vercel independente: `aprender-descobrir-api` (ID `prj_gleCFedIpz1M1gLC2ALTOWTtxZmL`).
+- Variável `DATABASE_URL` do Neon `aprender-descobrir` / branch `development` cadastrada como **sensitive**, somente para **Preview** (o valor não é mantido neste repositório).
+- API implantada a partir das funções nesta branch, usando deployment manual do Vercel (sem conexão Git automática).
+- Staging URL: `https://aprender-descobrir-8t7tks0dl-donyxxj7s-projects.vercel.app` (build `READY`).
+- Consultas manuais em `/api/health` e `/api/catalog` ainda precisam ser verificadas: a execução externa não conseguiu acessar o endpoint e não houve logs de requisição.
+- Há também uma implantação inicial do projeto no alvo production **sem** `DATABASE_URL` de produção; não deve ser usada como ambiente operacional.
+- **Bloqueio Git**: a integração GitHub no Vercel não está autorizada para `pedrohvsoares07/Atividades---Infantis`. O proprietário precisa conceder acesso a este repositório nas configurações da integração GitHub da Vercel. Após a autorização, vincular o repositório e configurar builds de Preview para a branch do backend; não mudar a demo Next.js preexistente.
+- O frontend do Pedro continua sem consumir a API, propositalmente. Não foi ativado Stripe nem publicada a loja.
