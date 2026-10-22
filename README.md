@@ -59,3 +59,12 @@ Quando os arquivos chegarem, copie **apenas os arquivos aprovados para publicaç
 - Definição futura de compra e entrega digital. Os botões mostram “Compras em breve”; não há checkout, Stripe, banco de dados ou coleta financeira.
 
 O conteúdo comercial e pedagógico deve ser revisado antes da publicação. Não há depoimentos, avaliações, certificações ou promessas de resultados.
+
+## Atualização do frontend (22/10/2026)
+
+- O Kit Essencial está indicado a **R$ 9,90** com **R$ 14,90** riscado; o Completo a **R$ 19,90** com **R$ 29,90** riscado, **somente como protótipo**. Não divulgue desconto sem comprovar que o valor de referência era realmente praticado.
+- A apresentação dos kits, os tamanhos dos valores e a marca com estrela foram atualizados.
+- **As fotos, capas e PDFs não foram adicionados ao GitHub**. A conta não possuía esses arquivos no repositório, então mantivemos os espaços de mídia identificados para não inventar imagens.
+- Os kits de PDFs pagos não podem ser incluídos em `public/` ou no build público. As únicas mídias publicáveis são fotos e capas aprovadas, cinco imagens de amostra e o PDF gratuito.
+- Checkout, backend, autenticação e entrega protegida continuam fora do frontend.
+- Handoff para o desenvolvedor: `docs/HANDOFF_BACKEND.md`.
