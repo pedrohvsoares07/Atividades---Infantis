@@ -5,14 +5,15 @@
 O backend inicial nasceu diretamente da `main` no commit
 `0b6ba184fd999a8dc3f287352ab66ae52bc2e5d6`.
 A `main` é a fonte oficial de visual e funcionalidades; a branch de
-desenvolvimento contínuo do servidor passa a ser apenas `backend`.
+desenvolvimento contínuo do servidor passa a ser apenas `backend-dev`.
 
 Nenhuma alteração nos arquivos de frontend `index.html`, `style.css`,
 `script.js` ou `assets/` (11 imagens WebP e a amostra gratuita em PDF).
 `frontend/ajustes-site-kits`, `teste-neon` e
 `backend/integracao-neon` não serão usadas para novas alterações nem mescladas
-diretamente. A remoção de branches antigas deve ser coordenada com Pedro para
-não perder histórico de trabalho.
+diretamente. As branches antigas permanecem temporariamente no GitHub apenas como
+histórico, sem participação nas integrações futuras. A exclusão definitiva
+requer acesso de manutenção e conferência com Pedro.
 
 ### Preços exibidos — preservados da main
 
@@ -44,7 +45,7 @@ publicar termos, validar webhooks e entrega de PDFs.
 
 - Projeto Git conectado: `backendinfantil` em `venturini-group` (ao
   qual a conexão Vercel do assistente pode não ter acesso).
-- Depois do merge aprovado, `main` é a branch de produção e `backend`
+- Depois do merge aprovado, `main` é a branch de produção e `backend-dev`
   permanece como a branch exclusiva de desenvolvimento servidor.
 - Framework: `Other` (site HTML/CSS/JS estático); Root Directory `./`.
 - `vercel.json` configura build `npm run build` e saída `dist`.
@@ -77,6 +78,6 @@ Pedro, preservando visual, planos e preços.
 ## Próximas etapas
 
 - Stripe TEST, termos versionados, entrega privada e autenticação deverão ser
-  implementados e auditados em `backend`.
+  implementados e auditados em `backend-dev`.
 - Evitar merges automáticos das branches legadas.
 - Rotacionar a senha PostgreSQL compartilhada anteriormente na conversa.
