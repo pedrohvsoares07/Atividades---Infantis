@@ -20,11 +20,18 @@ requer acesso de manutenção e conferência com Pedro.
 - Kit Essencial: R$ 9,90; referência visual R$ 14,90.
 - Kit Completo: R$ 19,90; referência visual R$ 29,90.
 
-**A presença do preço na vitrine não significa que o preço de cobrança
-tenha sido aprovado e registrado no Neon.** Produtos no banco `development`
-continuam `draft` e `price_cents = NULL`, e o checkout está bloqueado.
-Antes de iniciar pagamentos reais, confirmar os valores comerciais com Pedro,
-publicar termos, validar webhooks e entrega de PDFs.
+**Preços comerciais aprovados por Pedro e pelo responsável técnico em
+22/10/2026: R$ 9,90 (Essencial), R$ 19,90 (Completo).** Os valores
+correspondem a 990 e 1990 centavos na futura integração Stripe TEST.
+Os preços de referência da vitrine NÃO são preços a cobrar. No Neon
+`development`, os produtos ainda permanecem em `draft` e sem preço
+de cobrança registrado. Não ativar Stripe nem pagamentos reais sem
+termos efetivamente publicados, aceite versionado, webhooks e entrega
+privada validada.
+
+**Avaliação dos PDFs:** foi relatada revisão positiva por uma pedagoga.
+Isso não equivale a certificação profissional assinada nem comprova,
+por si só, titularidade de direitos autorais sobre todos os conteúdos.
 
 ## Estrutura
 
@@ -81,3 +88,22 @@ Pedro, preservando visual, planos e preços.
   implementados e auditados em `backend-dev`.
 - Evitar merges automáticos das branches legadas.
 - Rotacionar a senha PostgreSQL compartilhada anteriormente na conversa.
+
+## Etapa de termos — 22/10/2026
+
+- `termos.html`: versão de revisão `2026-10-22.1` de Termos de Compra e Licença,
+  adicionada SEM alterar `index.html`, `style.css`, `script.js` ou `assets/`.
+  Disponível no Preview em `/termos.html`; ainda não habilitada para compras.
+- `server/legal.mjs`: metadados imutáveis desta versão e
+  `LEGAL_DOCUMENT_APPROVED = false` até completar os dados do vendedor.
+- Campos obrigatórios pendentes: nome/razão social responsável, CPF/CNPJ
+  aplicável, endereço físico, contato de suporte, prazo e modo de entrega.
+- `tests/legal.test.mjs`: testa versionamento, campos e preservação
+  do checkout bloqueado.
+- O CDC (art. 49) e Decreto 7.962/2013 impõem regras de arrependimento,
+  identificação do fornecedor, transparência e atendimento.
+- O aceite será checkbox desmarcado por padrão, com termo/version/hash/data
+  vinculados à sessão de checkout apenas após aprovação do conteúdo.
+- Próxima etapa: completar os dados, revisão comercial/jurídica do texto,
+  implementar aceite auditável em ambiente de teste e somente depois
+  Stripe TEST com chaves fornecidas via variáveis secretas.
