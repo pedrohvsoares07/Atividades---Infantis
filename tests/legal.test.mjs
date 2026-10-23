@@ -8,12 +8,17 @@ import {
 
 test("termos versionados e ainda não liberados para compra", async () => {
   const html = await readFile("termos.html", "utf8");
-  assert.equal(CURRENT_TERMS_VERSION, "2026-10-22.1");
+  assert.equal(CURRENT_TERMS_VERSION, "2026-10-22.2");
   assert.equal(LEGAL_DOCUMENT_APPROVED, false);
   assert.equal(CHECKOUT_REQUIRES_EXPLICIT_ACCEPTANCE, true);
   assert.ok(html.includes(CURRENT_TERMS_VERSION));
   assert.ok(html.includes("MINUTA EM REVISÃO"));
-  assert.ok(html.includes("[PREENCHER NOME OU RAZÃO SOCIAL]"));
+  assert.ok(html.includes("[PREENCHER NOME CIVIL COMPLETO DO PEDRO]"));
+  assert.ok(html.includes("[PREENCHER CPF DO PEDRO]"));
+  assert.ok(html.includes("[PREENCHER ENDEREÇO]"));
+  assert.ok(html.includes("Venturini Group"));
+  assert.ok(html.includes("venturinigroup0709@gmail.com"));
+  assert.ok(!html.includes("[PREENCHER E-MAIL DE ATENDIMENTO]"));
   assert.ok(html.includes("7 (sete) dias"));
   assert.ok(html.includes("não gera, por si só, renúncia automática"));
 });
