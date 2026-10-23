@@ -91,13 +91,20 @@ Pedro, preservando visual, planos e preços.
 
 ## Etapa de termos — 22/10/2026
 
-- `termos.html`: versão de revisão `2026-10-22.1` de Termos de Compra e Licença,
+- `termos.html`: versão de revisão `2026-10-22.2` de Termos de Compra e Licença,
   adicionada SEM alterar `index.html`, `style.css`, `script.js` ou `assets/`.
   Disponível no Preview em `/termos.html`; ainda não habilitada para compras.
 - `server/legal.mjs`: metadados imutáveis desta versão e
   `LEGAL_DOCUMENT_APPROVED = false` até completar os dados do vendedor.
-- Campos obrigatórios pendentes: nome/razão social responsável, CPF/CNPJ
-  aplicável, endereço físico, contato de suporte, prazo e modo de entrega.
+- Marca operacional informada: Venturini Group (denominação comercial, sem CNPJ),
+  e-mail público de atendimento: venturinigroup0709@gmail.com.
+- O vendedor é pessoa física; nome civil completo, CPF para identificação
+  pública responsável e endereço físico de contato ainda precisam ser
+  confirmados antes de permitir vendas. **Não versionar nem fazer commit
+  de dados pessoais de terceiros desnecessariamente**. CPF recebido fora
+  do repositório e não incluído nos arquivos públicos neste commit.
+- Pendentes: identificação legal publicável, endereço físico,
+  prazo e modo de entrega, Política de Privacidade e revisão final.
 - `tests/legal.test.mjs`: testa versionamento, campos e preservação
   do checkout bloqueado.
 - O CDC (art. 49) e Decreto 7.962/2013 impõem regras de arrependimento,
@@ -107,3 +114,17 @@ Pedro, preservando visual, planos e preços.
 - Próxima etapa: completar os dados, revisão comercial/jurídica do texto,
   implementar aceite auditável em ambiente de teste e somente depois
   Stripe TEST com chaves fornecidas via variáveis secretas.
+
+
+### Atualização após merge dos termos na main
+
+A versão inicial dos termos foi integrada à `main` antes do recebimento de
+informações comerciais. A branch `backend-dev` foi sincronizada com a
+`main` atual antes desta alteração e recebe agora o texto de revisão
+`2026-10-22.2`, sem alterar o site oficial em produção.
+
+A denominação `Venturini Group` é tratada como identificação comercial, **não
+como razão social de empresa constituída**, pois não há CNPJ. O CPF enviado
+foi validado apenas formalmente e não foi inserido no repositório público.
+A publicação de CPF e endereço de contato deve ser planejada com o próprio
+titular e cumprir o art. 2º do Decreto 7.962/2013, inclusive em venda digital.
