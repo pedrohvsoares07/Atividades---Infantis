@@ -5,7 +5,7 @@ import { resolve, join } from "node:path";
 // sem transformar HTML, CSS, JavaScript, imagens ou a amostra PDF.
 const root = process.cwd();
 const output = resolve(root, "dist");
-const staticFiles = ["index.html", "style.css", "script.js", "termos.html"];
+const staticFiles = ["index.html", "style.css", "script.js", "termos.html", "privacidade.html"];
 for (const name of [...staticFiles, "assets"]) {
   const metadata = await stat(join(root, name));
   if (!metadata) throw new Error(`Arquivo obrigatório ausente: ${name}`);

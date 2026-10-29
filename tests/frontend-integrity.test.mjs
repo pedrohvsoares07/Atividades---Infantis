@@ -12,6 +12,9 @@ test("build preserva os arquivos oficiais de frontend byte por byte", async () =
     ]);
     assert.deepEqual(generated, original, name);
   }
+  for (const name of ["termos.html", "privacidade.html"]) {
+    assert.deepEqual(await readFile(join("dist", name)), await readFile(name));
+  }
   const images = await readdir(join("assets", "images"));
   assert.equal(images.filter(x => x.endsWith(".webp")).length, 11);
   for (const name of images) {

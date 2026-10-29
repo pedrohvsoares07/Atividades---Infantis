@@ -6,21 +6,26 @@ import {
   CHECKOUT_REQUIRES_EXPLICIT_ACCEPTANCE, APPROVED_DISPLAY_PRICES_CENTS
 } from "../server/legal.mjs";
 
-test("termos versionados e ainda não liberados para compra", async () => {
-  const html = await readFile("termos.html", "utf8");
-  assert.equal(CURRENT_TERMS_VERSION, "2026-10-22.2");
+test("documentos legais revisados e pendência cadastral sinalizada", async () => {
+  const terms = await readFile("termos.html", "utf8");
+  const privacy = await readFile("privacidade.html", "utf8");
+  const home = await readFile("index.html", "utf8");
+  assert.equal(CURRENT_TERMS_VERSION, "2026-10-28.1");
   assert.equal(LEGAL_DOCUMENT_APPROVED, false);
   assert.equal(CHECKOUT_REQUIRES_EXPLICIT_ACCEPTANCE, true);
-  assert.ok(html.includes(CURRENT_TERMS_VERSION));
-  assert.ok(html.includes("MINUTA EM REVISÃO"));
-  assert.ok(html.includes("[PREENCHER NOME CIVIL COMPLETO DO PEDRO]"));
-  assert.ok(html.includes("[PREENCHER CPF DO PEDRO]"));
-  assert.ok(html.includes("[PREENCHER ENDEREÇO]"));
-  assert.ok(html.includes("Venturini Group"));
-  assert.ok(html.includes("venturinigroup0709@gmail.com"));
-  assert.ok(!html.includes("[PREENCHER E-MAIL DE ATENDIMENTO]"));
-  assert.ok(html.includes("7 (sete) dias"));
-  assert.ok(html.includes("não gera, por si só, renúncia automática"));
+  for (const doc of [terms, privacy]) {
+    assert.ok(doc.includes("2026-10-28.1"));
+    assert.ok(doc.includes("pendente de confirmação"));
+    assert.ok(doc.includes("venturinigroup0709@gmail.com"));
+    assert.ok(!doc.includes("[PREENCHER"));
+    assert.ok(!doc.includes("Pagamentos continuam desativados"));
+  }
+  assert.ok(terms.includes("R$ 5,90"));
+  assert.ok(terms.includes("7 (sete) dias"));
+  assert.ok(privacy.includes("Vercel"));
+  assert.ok(privacy.includes("Meta"));
+  assert.ok(home.includes('href="/privacidade.html"'));
+  assert.ok(home.includes('href="/termos.html"'));
 });
 
 test("preços confirmados sem expor cobrança prematura", async () => {
@@ -35,6 +40,7 @@ test("preços confirmados sem expor cobrança prematura", async () => {
 test("build publica termos extras e preserva frontend anterior", async () => {
   const script = await readFile("scripts/build.mjs", "utf8");
   assert.ok(script.includes('"termos.html"'));
+  assert.ok(script.includes('"privacidade.html"'));
   assert.ok(script.includes('"index.html"'));
   assert.ok(script.includes('"assets"'));
 });
