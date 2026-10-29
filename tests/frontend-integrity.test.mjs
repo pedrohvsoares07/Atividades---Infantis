@@ -24,11 +24,17 @@ test("build preserva os arquivos oficiais de frontend byte por byte", async () =
   assert.ok((await stat(join("dist", pdf))).size > 0);
 });
 
-test("preços exibidos na main e bloqueio de vendas não são alterados", async () => {
+test("preços e links de checkout externo da Cakto são exibidos corretamente", async () => {
   const html = await readFile("index.html", "utf8");
   for (const token of ["R$ 14,90", "9,90", "R$ 29,90", "19,90"]) {
     assert.ok(html.includes(token), `Preço exibido ausente: ${token}`);
   }
-  assert.ok(html.includes('"checkoutConfigured":false'));
+  assert.ok(html.includes('"checkoutConfigured":true'));
+  assert.ok(html.includes('"checkoutMode":"external"'));
+  assert.ok(html.includes('href="https://pay.cakto.com.br/zdk6j2p_1243948"'));
+  assert.ok(html.includes('href="https://pay.cakto.com.br/msvk7xs_1245425"'));
+  assert.ok(!html.includes("Compra ainda não disponível"));
+  const script = await readFile("script.js", "utf8");
+  assert.ok(!script.includes("planModal"));
   assert.ok(html.includes("assets/images/imagem-01.webp"));
 });

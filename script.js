@@ -34,7 +34,6 @@ function showModal(el) { beforeModal = document.activeElement instanceof HTMLEle
 function hideModal(el) { el.hidden = true; if (all('.overlay').every(m => m.hidden))
     document.body.classList.remove('locked'); beforeModal?.focus(); }
 find('#zoomPreview').addEventListener('click', () => { const prev = find('#previewImg'), modal = find('#modalImage'); modal.src = prev.src; modal.alt = prev.alt; showModal(find('#previewModal')); });
-all('.btn-plan').forEach(b => b.addEventListener('click', () => { find('#planModalTitle').textContent = `Kit ${b.dataset.plan}: compra ainda indisponível`; showModal(find('#planModal')); }));
-all('[data-close]').forEach(b => b.addEventListener('click', () => hideModal(find(b.dataset.close === 'preview' ? '#previewModal' : '#planModal'))));
+all('[data-close]').forEach(b => b.addEventListener('click', () => hideModal(find('#previewModal'))));
 document.addEventListener('keydown', e => { if (e.key === 'Escape')
     all('.overlay').filter(m => !m.hidden).forEach(hideModal); });
